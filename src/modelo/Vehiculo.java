@@ -1,21 +1,21 @@
 package modelo;
 
 public class Vehiculo {
-    
+
     protected String matricula, modelo, marca, tipoMotor;
     protected boolean isDisponible;
     protected int kmsRecorridos;
     protected float precioDia;
 
     public Vehiculo(String matricula, String modelo, String marca, boolean isDisponible, int kmsRecorridos, String tipoMotor) {
-        
+
         this.matricula = matricula;
         this.modelo = modelo;
         this.marca = marca;
         this.isDisponible = isDisponible;
         this.kmsRecorridos = kmsRecorridos;
         this.tipoMotor = tipoMotor;
-        
+
     }
 
     public String getMatricula() { return matricula; }
@@ -35,4 +35,3 @@ public class Vehiculo {
     public void setPrecioDia(float precioDia) { this.precioDia = precioDia; }
 
 }
-

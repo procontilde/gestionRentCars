@@ -1,18 +1,18 @@
 package modelo;
 
 public class Coche extends Vehiculo {
-    
+
     private int plazas, puertas, volumenMaletero;
     private String tipo;
-    
+
     public Coche(String matricula, String modelo, String marca, boolean isDisponible, int plazas, int puertas, int volumenMaletero, String tipo, int kmsRecorridos, String tipoMotor) {
-    
+
         super(matricula, modelo, marca, isDisponible, kmsRecorridos, tipoMotor);
         this.plazas = plazas;
         this.puertas = puertas;
         this.volumenMaletero = volumenMaletero;
         this.tipo = tipo;
-    
+
     }
 
     public int getPlazas() { return plazas; }
@@ -27,18 +27,19 @@ public class Coche extends Vehiculo {
 
     @Override
     public String toString() {
-        
-        return "Coche [Matrícula=" + matricula 
-                + ", marca=" + marca
-                + ", modelo=" + modelo
+
+        return "COCHE [matricula=" + matricula 
+                + ", modelo=" + modelo 
+                + ", marca=" + marca 
                 + ", plazas=" + plazas 
-                + ", puertas=" + puertas  
-                + ", volumen maletero=" + volumenMaletero
-                + ", tipo=" + tipo
-                + ", precio/día=" + precioDia 
-                + ", disponible=" + isDisponible + "]";
-    
+                + ", puertas=" + puertas 
+                + ", volumen del maletero=" + volumenMaletero 
+                + ", tipo=" + tipo 
+                + ", kms recorridos=" + kmsRecorridos
+                + ", tipo de motor=" + tipoMotor 
+                + ", precio por dia=" + precioDia + "]";
+        
     }
+    
 
 }
-

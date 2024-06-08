@@ -3,10 +3,12 @@ package modelo.interfaces;
 import modelo.Empleado;
 
 public interface GestorEmpleados {
-    boolean altaEmpleado(Empleado e);
-    boolean findEmpleado(String dni);
-    boolean findEmpleado(Empleado e);
-    boolean removeEmpleado(String dni);
-    String crearNomina(Empleado e);
-    float calcularHorasExtra(String dni);
+	
+    public boolean altaEmpleado(Empleado e);
+    public boolean findEmpleado(String dni);
+    public boolean findEmpleado(Empleado e);
+    public boolean removeEmpleado(String dni);
+    public String crearNomina(Empleado e);
+    public float calcularHorasExtra(String dni);
+    
 }

@@ -1,36 +1,40 @@
 package modelo;
 
 public class Furgon extends Vehiculo {
-    
-    private float cargaMaxima;
-    private int plazas;
 
-    public Furgon(String matricula, String modelo, String marca, boolean isDisponible, float cargaMaxima, int plazas, int kmsRecorridos, String tipoMotor) {
-        
+    private int capacidadCarga, volumenCarga;
+    private String tipoCarga;
+
+    public Furgon(String matricula, String modelo, String marca, boolean isDisponible, int kmsRecorridos, int capacidadCarga, int volumenCarga, String tipoCarga, String tipoMotor) {
+
         super(matricula, modelo, marca, isDisponible, kmsRecorridos, tipoMotor);
-        this.cargaMaxima = cargaMaxima;
-        this.plazas = plazas;
-        
+        this.capacidadCarga = capacidadCarga;
+        this.volumenCarga = volumenCarga;
+        this.tipoCarga = tipoCarga;
+
     }
 
-    public float getCargaMaxima() { return cargaMaxima; }
-    public int getPlazas() { return plazas; }
+    public int getCapacidadCarga() { return capacidadCarga; }
+    public int getVolumenCarga() { return volumenCarga; }
+    public String getTipoCarga() { return tipoCarga; }
 
-    public void setCargaMaxima(float cargaMaxima) { this.cargaMaxima = cargaMaxima; }
-    public void setPlazas(int plazas) { this.plazas = plazas; }
+    public void setCapacidadCarga(int capacidadCarga) { this.capacidadCarga = capacidadCarga; }
+    public void setVolumenCarga(int volumenCarga) { this.volumenCarga = volumenCarga; }
+    public void setTipoCarga(String tipoCarga) { this.tipoCarga = tipoCarga; }
 
     @Override
     public String toString() {
+
+        return "FURGON [matricula=" + matricula 
+                + ", modelo=" + modelo 
+                + ", marca=" + marca 
+                + ", capacidad de carga=" + capacidadCarga 
+                + ", volumen de carga=" + volumenCarga 
+                + ", tipo de carga=" + tipoCarga
+                + ", kms recorridos=" + kmsRecorridos
+                + ", tipo de motor=" + tipoMotor 
+                + ", precio por dia=" + precioDia + "]";
         
-        return "Furgon [Matrícula=" + matricula 
-                + ", marca=" + marca
-                + ", modelo=" + modelo
-                + ", carga máxima=" + cargaMaxima 
-                + ", plazas=" + plazas 
-                + ", precio/día=" + precioDia 
-                + ", disponible=" + isDisponible + "]";
-    
     }
 
 }
-
