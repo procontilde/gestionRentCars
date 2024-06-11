@@ -141,6 +141,47 @@ public class IORentACar {
         return miScan.nextLine();
         
     }
+    
+    public Vehiculo encontrarVehiculoParaDevolucion() {
+    	
+        System.out.println("Introduzca la matrícula:");
+        String matricula = miScan.nextLine();
+        Vehiculo vehiculo = empresa.buscarVehiculoPorMatricula(matricula);
+        
+        if (vehiculo == null) {
+        	
+            System.out.println("ERROR. Vehículo no encontrado.");
+            
+        }
+        
+        return vehiculo;
+        
+    }
+
+    public void devolverVehiculo(Vehiculo vehiculo) {
+    	
+        if (vehiculo != null) {
+        	
+            if (!vehiculo.isDisponible()) {
+            	
+                vehiculo.devolver(); 
+                
+                System.out.println("Vehículo devuelto con éxito.");
+                
+            } else {
+            	
+                System.out.println("El vehículo ya está disponible.");
+                
+            }
+            
+        } else {
+        	
+            System.out.println("ERROR");
+            
+        }
+        
+    }
+
 
     public String obtenerDniCliente() {
     	

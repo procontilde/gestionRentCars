@@ -1,9 +1,12 @@
 package controlador;
 
+import java.time.LocalDate;
 import modelo.*;
 import vista.IORentACar;
 
 public class MainRentACar {
+	
+	private static int contadorReservas = 1;
 
     public static void main(String[] args) {
     	
@@ -50,32 +53,58 @@ public class MainRentACar {
                 	
                     Cliente clienteReserva = io.obtenerClienteParaReserva();
                     Vehiculo vehiculoReserva = io.obtenerVehiculoParaReserva();
-                    
+
                     if (clienteReserva != null && vehiculoReserva != null) {
-                    	
-                        System.out.println("Reserva realizada con éxito.");
+
+                        int numeroReserva = generarNumeroReserva();                        
+                        Reserva reserva = new Reserva(LocalDate.now(), clienteReserva, vehiculoReserva);
+                        boolean exito = empresa.agregarReserva(numeroReserva, reserva); 
+                        
+                        if (exito) {
+                        	
+                            System.out.println("Reserva realizada con éxito.");
+                            
+                        } else {
+                        	
+                            System.out.println("ERROR");
+                            
+                        }
                         
                     } else {
                     	
-                        System.out.println("ERROR en la reserva.");
+                        System.out.println("ERROR");
                         
                     }
+                    
                     break;
+
                     
                 case 'f':
-                	
                     Cliente clienteDevolucion = io.obtenerClienteParaDevolucion();
                     
                     if (clienteDevolucion != null) {
-                    	
-                        System.out.println("Vehículo devuelto con éxito.");
+                        
+                        Vehiculo vehiculoDevolucion = io.encontrarVehiculoParaDevolucion();
+                        
+                        if (vehiculoDevolucion != null) {
+                        
+                            vehiculoDevolucion.devolver(); 
+                            System.out.println("Vehículo devuelto con éxito.");
+                            
+                        } else {
+                        	
+                            System.out.println("No se ha seleccionado un vehículo para devolver.");
+                            
+                        }
                         
                     } else {
                     	
-                        System.out.println("ERROR en la devolución.");
+                        System.out.println("ERROR");
                         
                     }
+                    
                     break;
+
                     
                 case 'g':
                 	
@@ -104,27 +133,10 @@ public class MainRentACar {
         
     }
     
+    private static int generarNumeroReserva() {
+    	
+        return contadorReservas++;
+        
+    }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

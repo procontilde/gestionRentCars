@@ -17,6 +17,8 @@ public class Vehiculo {
         this.tipoMotor = tipoMotor;
 
     }
+    
+    public void devolver() { this.isDisponible = true; }
 
     public String getMatricula() { return matricula; }
     public String getModelo() { return modelo; }

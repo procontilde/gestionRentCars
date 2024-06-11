@@ -1,19 +1,23 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Empresa {
 	
     private List<Cliente> misClientes;
     private List<Vehiculo> misVehiculos;
     private List<Empleado> misEmpleados;
+    private Map<Integer, Reserva> mapaReservas;
 
     public Empresa() {
     	
         this.misClientes = new ArrayList<>();
         this.misVehiculos = new ArrayList<>();
         this.misEmpleados = new ArrayList<>();
+        this.mapaReservas = new HashMap<>();
         
     }
 
@@ -70,4 +74,53 @@ public class Empresa {
         
     }
     
+    public boolean agregarReserva(int numeroReserva, Reserva reserva) {
+    	
+        if (reserva != null && !mapaReservas.containsKey(numeroReserva)) {
+        	
+            mapaReservas.put(numeroReserva, reserva);
+            
+            return true;
+            
+        }
+        
+        return false;
+        
+    }
+
+
+    public Reserva encontrarReserva(int numeroReserva) {
+    	
+        return mapaReservas.get(numeroReserva);
+        
+    }
+
+    public boolean actualizarReserva(int numeroReserva, Reserva nuevaReserva) {
+    	
+        if (mapaReservas.containsKey(numeroReserva) && nuevaReserva != null) {
+        	
+            mapaReservas.put(numeroReserva, nuevaReserva);
+            return true;
+            
+        }
+        
+        return false;
+        
+    }
+
+    public boolean eliminarReserva(int numeroReserva) {
+    	
+        if (mapaReservas.containsKey(numeroReserva)) {
+        	
+            mapaReservas.remove(numeroReserva);
+            return true;
+            
+        }
+        
+        return false;
+        
+    }
+    
 }
+
+
