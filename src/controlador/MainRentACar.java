@@ -5,17 +5,17 @@ import modelo.*;
 import vista.IORentACar;
 
 public class MainRentACar {
-	
-	private static int contadorReservas = 1;
+    
+    private static int contadorReservas = 1;
 
     public static void main(String[] args) {
-    	
+        
         Empresa empresa = new Empresa();
         IORentACar io = new IORentACar(empresa);
         char opcion;
 
         do {
-        	
+            
             io.mostrarMenu();
             opcion = io.obtenerOpcion();
             
@@ -80,9 +80,9 @@ public class MainRentACar {
                 	
                     Cliente clienteReserva = io.obtenerClienteParaReserva();
                     Vehiculo vehiculoReserva = io.obtenerVehiculoParaReserva();
-
+                    
                     if (clienteReserva != null && vehiculoReserva != null) {
-
+                    	
                         int numeroReserva = generarNumeroReserva();                        
                         Reserva reserva = new Reserva(LocalDate.now(), clienteReserva, vehiculoReserva);
                         boolean exito = empresa.agregarReserva(numeroReserva, reserva); 
@@ -105,17 +105,16 @@ public class MainRentACar {
                     
                     break;
 
-                    
                 case 'f':
                 	
                     Cliente clienteDevolucion = io.obtenerClienteParaDevolucion();
                     
                     if (clienteDevolucion != null) {
-                        
+                    	
                         Vehiculo vehiculoDevolucion = io.encontrarVehiculoParaDevolucion();
                         
                         if (vehiculoDevolucion != null) {
-                        
+                        	
                             vehiculoDevolucion.devolver(); 
                             System.out.println("Vehículo devuelto con éxito.");
                             
@@ -132,28 +131,106 @@ public class MainRentACar {
                     }
                     
                     break;
-
                     
                 case 'g':
                 	
-                    io.generarArchivoJSON("datos_empresa.json");
+                    if (io.eliminarCliente()) {
+                    	
+                        System.out.println("Cliente eliminado con éxito.");
+                        
+                    } else {
+                    	
+                        System.out.println("ERROR al eliminar cliente.");
+                        
+                    }
+                    
                     break;
                     
                 case 'h':
                 	
-                    io.leerArchivoJSON("datos_empresa.json");
+                    Cliente clienteEncontrado = io.buscarCliente();
+                    
+                    if (clienteEncontrado != null) {
+                    	
+                        System.out.println("Cliente encontrado: " + clienteEncontrado);
+                        
+                    }
+                    
                     break;
                     
                 case 'i':
+                	
+                    if (io.eliminarEmpleado()) {
+                    	
+                        System.out.println("Empleado eliminado con éxito.");
+                        
+                    } else {
+                    	
+                        System.out.println("ERROR al eliminar empleado.");
+                        
+                    }
+                    
+                    break;
+                    
+                case 'j':
+                	
+                    Empleado empleadoEncontrado = io.buscarEmpleado();
+                    
+                    if (empleadoEncontrado != null) {
+                    	
+                        System.out.println("Empleado encontrado: " + empleadoEncontrado);
+                        
+                    }
+                    
+                    break;
+                    
+                case 'k':
+                	
+                    if (io.eliminarVehiculo()) {
+                    	
+                        System.out.println("Vehículo eliminado con éxito.");
+                        
+                    } else {
+                    	
+                        System.out.println("ERROR al eliminar vehículo.");
+                        
+                    }
+                    
+                    break;
+                    
+                case 'l':
+                	
+                    Vehiculo vehiculoEncontrado = io.buscarVehiculo();
+                    
+                    if (vehiculoEncontrado != null) {
+                    	
+                        System.out.println("Vehículo encontrado: " + vehiculoEncontrado);
+                        
+                    }
+                    
+                    break;
+                    
+                case 'm':
+                	
+                    io.generarArchivoJSON("datos_empresa.json");
+                    break;
+                    
+                case 'n':
+                	
+                    io.leerArchivoJSON("datos_empresa.json");
+                    break;
+                    
+                case 'o':
                 	
                     break;
                     
                 default:
                 	
                     System.out.println("Introduzca una opción válida");
+                    
             }
             
-        } while (opcion != 'i');
+        } while (opcion != 'o');
         
     }
     
