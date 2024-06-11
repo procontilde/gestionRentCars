@@ -24,8 +24,17 @@ public class MainRentACar {
                 case 'a':
                 	
                     Cliente nuevoCliente = io.obtenerDatosCliente();
-                    empresa.agregarCliente(nuevoCliente);
-                    System.out.println("Cliente añadido con éxito.");
+                    
+                    if (empresa.agregarCliente(nuevoCliente)) {
+                    	
+                        System.out.println("Cliente añadido con éxito.");
+                        
+                    } else {
+                    	
+                        System.out.println("ERROR al agregar cliente.");
+                        
+                    }
+                    
                     break;
                     
                 case 'b':
@@ -38,15 +47,33 @@ public class MainRentACar {
                 case 'c':
                 	
                     Vehiculo nuevoVehiculo = io.obtenerDatosVehiculo();
-                    empresa.agregarVehiculo(nuevoVehiculo);
-                    System.out.println("Vehículo añadido con éxito.");
+                    
+                    if (empresa.agregarVehiculo(nuevoVehiculo)) {
+                    	
+                        System.out.println("Vehículo añadido con éxito.");
+                        
+                    } else {
+                    	
+                        System.out.println("ERROR al agregar vehículo.");
+                        
+                    }
+                    
                     break;
                     
                 case 'd':
                 	
                     Camion nuevoCamion = io.obtenerDatosCamion();
-                    empresa.agregarVehiculo(nuevoCamion);
-                    System.out.println("Camión añadido con éxito.");
+                    
+                    if (empresa.agregarVehiculo(nuevoCamion)) {
+                    	
+                        System.out.println("Camión añadido con éxito.");
+                        
+                    } else {
+                    	
+                        System.out.println("ERROR al agregar camión.");
+                        
+                    }
+                    
                     break;
                     
                 case 'e':
@@ -66,13 +93,13 @@ public class MainRentACar {
                             
                         } else {
                         	
-                            System.out.println("ERROR");
+                            System.out.println("ERROR al realizar la reserva.");
                             
                         }
                         
                     } else {
                     	
-                        System.out.println("ERROR");
+                        System.out.println("ERROR. Cliente o vehículo no encontrado.");
                         
                     }
                     
@@ -80,6 +107,7 @@ public class MainRentACar {
 
                     
                 case 'f':
+                	
                     Cliente clienteDevolucion = io.obtenerClienteParaDevolucion();
                     
                     if (clienteDevolucion != null) {
@@ -99,7 +127,7 @@ public class MainRentACar {
                         
                     } else {
                     	
-                        System.out.println("ERROR");
+                        System.out.println("ERROR. Cliente no encontrado.");
                         
                     }
                     
@@ -108,25 +136,21 @@ public class MainRentACar {
                     
                 case 'g':
                 	
-                    System.out.println("Generando archivo JSON...");
                     io.generarArchivoJSON("datos_empresa.json");
                     break;
                     
                 case 'h':
                 	
-                    System.out.println("Leyendo archivo JSON...");
                     io.leerArchivoJSON("datos_empresa.json");
                     break;
                     
                 case 'i':
                 	
-                    System.out.println("Saliendo del sistema.");
                     break;
                     
                 default:
                 	
-                    System.out.println("Opción no válida. Intente de nuevo.");
-                    
+                    System.out.println("Introduzca una opción válida");
             }
             
         } while (opcion != 'i');
