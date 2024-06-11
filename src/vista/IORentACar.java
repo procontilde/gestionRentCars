@@ -7,6 +7,7 @@ import modelo.Vehiculo;
 import modelo.Camion;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -30,15 +31,24 @@ public class IORentACar {
     public void mostrarMenu() {
     	
         System.out.println("MENÚ\nElija una de las siguientes opciones:\n" 
-        			+ "a. Añadir Cliente\n" 
-        			+ "b. Añadir Empleado\n" 
-        			+ "c. Añadir Vehículo\n" 
-        			+ "d. Añadir Camión\n" 
-        			+ "e. Realizar Reserva\n" 
-        			+ "f. Devolver Vehículo\n" 
-        			+ "g. Salir");
+				            + "a. Añadir Cliente\n" 
+				            + "b. Añadir Empleado\n" 
+				            + "c. Añadir Vehículo\n" 
+				            + "d. Añadir Camión\n" 
+				            + "e. Realizar Reserva\n" 
+				            + "f. Devolver Vehículo\n" 
+				            + "g. Eliminar Cliente\n" 
+				            + "h. Buscar Cliente\n" 
+				            + "i. Eliminar Empleado\n" 
+				            + "j. Buscar Empleado\n" 
+				            + "k. Eliminar Vehículo\n" 
+				            + "l. Buscar Vehículo\n" 
+				            + "m. Generar Archivo JSON\n" 
+				            + "n. Leer Archivo JSON\n" 
+				            + "o. Salir");
         
     }
+
 
     public char obtenerOpcion() {
     	
@@ -87,7 +97,7 @@ public class IORentACar {
         System.out.print("Introduzca el puesto: ");
         String puesto = miScan.nextLine();
         System.out.print("Introduzca el salario: ");
-        float salario = Float.parseFloat(miScan.nextLine());
+        float salario = Float.valueOf(miScan.nextLine());
 
         return new Empleado(dni, nombre, apellidos, email, telefono, direccion, numSS, puesto, salario);
         
@@ -102,9 +112,9 @@ public class IORentACar {
         System.out.print("Introduzca la marca: ");
         String marca = miScan.nextLine();
         System.out.print("¿Está disponible? (TRUE/FALSE): ");
-        boolean isDisponible = Boolean.parseBoolean(miScan.nextLine());
+        boolean isDisponible = Boolean.valueOf(miScan.nextLine());
         System.out.print("Introduzca los kilómetros recorridos: ");
-        int kmsRecorridos = Integer.parseInt(miScan.nextLine());
+        int kmsRecorridos = Integer.valueOf(miScan.nextLine());
         System.out.print("Introduzca el tipo de motor: ");
         String tipoMotor = miScan.nextLine();
 
@@ -121,19 +131,78 @@ public class IORentACar {
         System.out.print("Introduzca la marca: ");
         String marca = miScan.nextLine();
         System.out.print("¿Está disponible? (TRUE/FALSE): ");
-        boolean isDisponible = Boolean.parseBoolean(miScan.nextLine());
+        boolean isDisponible = Boolean.valueOf(miScan.nextLine());
         System.out.print("Introduzca los kilómetros recorridos: ");
-        int kmsRecorridos = Integer.parseInt(miScan.nextLine());
+        int kmsRecorridos = Integer.valueOf(miScan.nextLine());
         System.out.print("Introduzca el tipo de motor: ");
         String tipoMotor = miScan.nextLine();
         System.out.print("Introduzca la capacidad de carga: ");
-        double capacidadCarga = Double.parseDouble(miScan.nextLine());
+        double capacidadCarga = Double.valueOf(miScan.nextLine());
         System.out.print("Introduzca el número de ejes: ");
-        int numeroEjes = Integer.parseInt(miScan.nextLine());
+        int numeroEjes = Integer.valueOf(miScan.nextLine());
 
         return new Camion(matricula, modelo, marca, isDisponible, kmsRecorridos, tipoMotor, capacidadCarga, numeroEjes);
         
     }
+    
+
+    public boolean eliminarCliente() {
+    	
+        String dni = obtenerDniCliente();
+        return empresa.eliminarCliente(dni);
+        
+    }
+
+    public Cliente buscarCliente() {
+    	
+        String dni = obtenerDniCliente();
+        Cliente cliente = empresa.buscarClientePorDni(dni);
+        
+        if (cliente == null) System.out.println("ERROR");
+        return cliente;
+        
+    }
+
+    public boolean eliminarEmpleado() {
+    	
+        String dni = obtenerDniEmpleado();
+        return empresa.eliminarEmpleado(dni);
+        
+    }
+
+    public Empleado buscarEmpleado() {
+    	
+        String dni = obtenerDniEmpleado();
+        Empleado empleado = empresa.encontrarEmpleado(dni);
+        
+        if (empleado == null) System.out.println("ERROR");
+        return empleado;
+    }
+
+    public boolean eliminarVehiculo() {
+    	
+        String matricula = obtenerMatriculaVehiculo();
+        return empresa.eliminarVehiculo(matricula);
+        
+    }
+
+    public Vehiculo buscarVehiculo() {
+    	
+        String matricula = obtenerMatriculaVehiculo();
+        Vehiculo vehiculo = empresa.buscarVehiculoPorMatricula(matricula);
+        
+        if (vehiculo == null) System.out.println("ERROR");
+        return vehiculo;
+        
+    }
+
+    public String obtenerDniEmpleado() {
+    	
+        System.out.print("Introduzca el DNI del empleado: ");
+        return miScan.nextLine();
+        
+    }
+
 
     public String obtenerMatriculaVehiculo() {
     	
@@ -150,7 +219,7 @@ public class IORentACar {
         
         if (vehiculo == null) {
         	
-            System.out.println("ERROR. Vehículo no encontrado.");
+            System.out.println("ERROR");
             
         }
         
@@ -196,7 +265,7 @@ public class IORentACar {
         String dni = miScan.nextLine();
         Cliente cliente = empresa.buscarClientePorDni(dni);
         
-        if (cliente == null) System.out.println("ERROR. Cliente no encontrado.");
+        if (cliente == null) System.out.println("ERROR");
             
         return cliente;
         
@@ -208,7 +277,7 @@ public class IORentACar {
         String dni = miScan.nextLine();
         Cliente cliente = empresa.buscarClientePorDni(dni);
         
-        if (cliente == null) System.out.println("ERROR. Cliente no encontrado.");
+        if (cliente == null) System.out.println("ERROR");
         
         return cliente;
         
@@ -220,7 +289,7 @@ public class IORentACar {
         String matricula = miScan.nextLine();
         Vehiculo vehiculo = empresa.buscarVehiculoPorMatricula(matricula);
         
-        if (vehiculo == null)  System.out.println("ERROR. Vehículo no encontrado.");
+        if (vehiculo == null)  System.out.println("ERROR");
         
         return vehiculo;
         
@@ -229,26 +298,40 @@ public class IORentACar {
     public void generarArchivoJSON(String path) {
     	
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        BufferedWriter bW = null;
         
-        try (FileWriter writer = new FileWriter(path)) {
+        try {
         	
-            gson.toJson(empresa, writer);
+        	bW = new BufferedWriter(new FileWriter(path));
+        	
+            gson.toJson(empresa, bW);
             System.out.println("Archivo JSON generado correctamente en: " + path);
             
         } catch (IOException e) {
         	
-            System.err.println("ERROR al generar el archivo JSON: " + e.getMessage());
+            e.getMessage();
             
         }
+        
     }
 
     public void leerArchivoJSON(String path) {
+    	
         Gson gson = new Gson();
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            empresa = gson.fromJson(reader, Empresa.class);
+        BufferedReader bR = null;
+        
+        try {
+        	
+        	bR = new BufferedReader(new FileReader(path));
+        	
+            empresa = gson.fromJson(bR, Empresa.class);
             System.out.println("Datos cargados desde el archivo JSON en: " + path);
+            
         } catch (IOException e) {
-            System.err.println("ERROR al leer el archivo JSON: " + e.getMessage());
+        	
+            e.getMessage();
+            
         }
+        
     }
 }
