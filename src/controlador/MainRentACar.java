@@ -27,11 +27,11 @@ public class MainRentACar {
                     
                     if (empresa.agregarCliente(nuevoCliente)) {
                     	
-                        System.out.println("Cliente añadido con éxito.");
+                        System.out.println("Cliente añadido con éxito");
                         
                     } else {
                     	
-                        System.out.println("ERROR al agregar cliente.");
+                        System.out.println("ERROR");
                         
                     }
                     
@@ -54,7 +54,7 @@ public class MainRentACar {
                         
                     } else {
                     	
-                        System.out.println("ERROR al agregar vehículo.");
+                        System.out.println("ERROR");
                         
                     }
                     
@@ -70,7 +70,7 @@ public class MainRentACar {
                         
                     } else {
                     	
-                        System.out.println("ERROR al agregar camión.");
+                        System.out.println("ERROR");
                         
                     }
                     
@@ -93,7 +93,7 @@ public class MainRentACar {
                             
                         } else {
                         	
-                            System.out.println("ERROR al realizar la reserva.");
+                            System.out.println("ERROR");
                             
                         }
                         
@@ -126,7 +126,7 @@ public class MainRentACar {
                         
                     } else {
                     	
-                        System.out.println("ERROR. Cliente no encontrado.");
+                        System.out.println("ERROR");
                         
                     }
                     
@@ -136,11 +136,11 @@ public class MainRentACar {
                 	
                     if (io.eliminarCliente()) {
                     	
-                        System.out.println("Cliente eliminado con éxito.");
+                        System.out.println("Cliente eliminado con éxito");
                         
                     } else {
                     	
-                        System.out.println("ERROR al eliminar cliente.");
+                        System.out.println("ERROR");
                         
                     }
                     
@@ -166,7 +166,7 @@ public class MainRentACar {
                         
                     } else {
                     	
-                        System.out.println("ERROR al eliminar empleado.");
+                        System.out.println("ERROR");
                         
                     }
                     
@@ -178,7 +178,7 @@ public class MainRentACar {
                     
                     if (empleadoEncontrado != null) {
                     	
-                        System.out.println("Empleado encontrado: " + empleadoEncontrado);
+                        System.out.println("Empleado: " + empleadoEncontrado);
                         
                     }
                     
@@ -192,7 +192,7 @@ public class MainRentACar {
                         
                     } else {
                     	
-                        System.out.println("ERROR al eliminar vehículo.");
+                        System.out.println("ERROR");
                         
                     }
                     
@@ -204,7 +204,7 @@ public class MainRentACar {
                     
                     if (vehiculoEncontrado != null) {
                     	
-                        System.out.println("Vehículo encontrado: " + vehiculoEncontrado);
+                        System.out.println("Vehículo: " + vehiculoEncontrado);
                         
                     }
                     
