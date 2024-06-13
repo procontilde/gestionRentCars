@@ -52,7 +52,7 @@ public class IORentACar {
 
     public char obtenerOpcion() {
     	
-        System.out.print("Seleccione una opción: ");
+        System.out.print("Seleccione una de las siguientes opciones: ");
         return miScan.nextLine().charAt(0);
         
     }
